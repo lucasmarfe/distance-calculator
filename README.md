@@ -33,3 +33,12 @@ This project was bootstrapped with [Spring Initializr](https://start.spring.io/)
 The API is documented using Swagger available on:
 `http://localhost:8080/swagger-ui/index.html`
 
+## Usage
+To run  the Spring Boot Application:
+### `mvn spring-boot:run`
+
+## Improvements
+
+* Better error handling
+* Create a docker image
+* Black box testing
