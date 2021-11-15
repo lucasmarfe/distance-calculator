@@ -3,13 +3,15 @@ package com.woodwing.distancecalculator.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.Value;
 
 @Builder
 @Getter
 @ToString
+@Value
 public class Distance {
 
-    private Double value;
-    private UnitDistance unit;
+    Double value;
+    UnitDistance unit;
 
 }
