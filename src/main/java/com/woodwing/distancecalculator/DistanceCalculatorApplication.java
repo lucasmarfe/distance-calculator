@@ -3,11 +3,11 @@ package com.woodwing.distancecalculator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class DistancecalculatorApplication {
+@SpringBootApplication(scanBasePackages = "com.woodwing.distancecalculator")
+public class DistanceCalculatorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DistancecalculatorApplication.class, args);
+		SpringApplication.run(DistanceCalculatorApplication.class, args);
 	}
 
 }
