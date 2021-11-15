@@ -9,9 +9,9 @@ import lombok.Value;
 @Builder
 public class CalculationRequest {
 
-  Distance distanceA;
+    Distance distanceA;
 
-  Distance distanceB;
+    Distance distanceB;
 
-  UnitDistance resultUnitDistance;
+    UnitDistance resultUnitDistance;
 }

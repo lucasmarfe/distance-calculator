@@ -1,23 +1,29 @@
 package com.woodwing.distancecalculator.domain;
 
 public enum UnitDistance {
-    YARDS{
+    YARDS {
         @Override
-        protected Double conversionFactor(UnitDistance toUnit){
-            switch (toUnit){
-                case YARDS: return 1.0;
-                case METERS: return 0.9144;
-                default: throw new UnsupportedOperationException("Unsupported Conversion: " + toUnit);
+        protected Double conversionFactor(UnitDistance toUnit) {
+            switch (toUnit) {
+                case YARDS:
+                    return 1.0;
+                case METERS:
+                    return 0.9144;
+                default:
+                    throw new UnsupportedOperationException("Unsupported Conversion: " + toUnit);
             }
         }
     },
-    METERS{
+    METERS {
         @Override
-        protected Double conversionFactor(UnitDistance toUnit){
-            switch (toUnit){
-                case YARDS: return 1.09361;
-                case METERS: return 1.0;
-                default: throw new UnsupportedOperationException("Unsupported Conversion: " + toUnit);
+        protected Double conversionFactor(UnitDistance toUnit) {
+            switch (toUnit) {
+                case YARDS:
+                    return 1.09361;
+                case METERS:
+                    return 1.0;
+                default:
+                    throw new UnsupportedOperationException("Unsupported Conversion: " + toUnit);
             }
         }
     };

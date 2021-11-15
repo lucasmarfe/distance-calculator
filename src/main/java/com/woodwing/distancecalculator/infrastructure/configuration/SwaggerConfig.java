@@ -14,22 +14,22 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-  private static final String TITLE_SWAGGER = "Distance Calculator API";
+    private static final String TITLE_SWAGGER = "Distance Calculator API";
 
-  private static final String DESCRIPTION_SWAGGER =
-      "API responsible for calculating distance.";
+    private static final String DESCRIPTION_SWAGGER =
+            "API responsible for calculating distance.";
 
-  @Bean
-  public Docket api() {
-    return new Docket(DocumentationType.SWAGGER_2)
-        .select()
-        .apis(RequestHandlerSelectors.basePackage("com.woodwing.distancecalculator.application.rest"))
-        .paths(PathSelectors.any())
-        .build()
-        .apiInfo(buildMetadata());
-  }
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.woodwing.distancecalculator.application.rest"))
+                .paths(PathSelectors.any())
+                .build()
+                .apiInfo(buildMetadata());
+    }
 
-  private ApiInfo buildMetadata() {
-    return new ApiInfoBuilder().title(TITLE_SWAGGER).description(DESCRIPTION_SWAGGER).build();
-  }
+    private ApiInfo buildMetadata() {
+        return new ApiInfoBuilder().title(TITLE_SWAGGER).description(DESCRIPTION_SWAGGER).build();
+    }
 }

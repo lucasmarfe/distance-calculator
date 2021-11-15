@@ -22,14 +22,14 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class DistanceService {
 
-  public CalculationResponse addDistances(CalculationRequest request) {
-    var distanceAConverted = DistanceFactory.toUnit(request.getDistanceA(), request.getResultUnitDistance());
-    var distanceBConverted = DistanceFactory.toUnit(request.getDistanceB(), request.getResultUnitDistance());
-    return CalculationResponse.builder()
-            .result(Distance.builder()
-            .value(distanceAConverted.getValue() + distanceBConverted.getValue())
-            .unit(request.getResultUnitDistance())
-            .build())
-            .build();
-  }
+    public CalculationResponse addDistances(CalculationRequest request) {
+        var distanceAConverted = DistanceFactory.toUnit(request.getDistanceA(), request.getResultUnitDistance());
+        var distanceBConverted = DistanceFactory.toUnit(request.getDistanceB(), request.getResultUnitDistance());
+        return CalculationResponse.builder()
+                .result(Distance.builder()
+                        .value(distanceAConverted.getValue() + distanceBConverted.getValue())
+                        .unit(request.getResultUnitDistance())
+                        .build())
+                .build();
+    }
 }
