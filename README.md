@@ -26,3 +26,10 @@ can also be used by some tools in order to automate API-related tests.
 ## Prerequisites
 
 * Java 11, Maven, Git
+
+
+## Endpoints
+
+The API is documented using Swagger available on:
+`http://localhost:8080/swagger-ui/index.html`
+
