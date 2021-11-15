@@ -19,6 +19,14 @@ import java.util.UUID;
 @ControllerAdvice
 public class HttpExceptionHandler extends ResponseEntityExceptionHandler {
 
+    private static HttpStatus resolveStatusCode(Exception exception) {
+        var statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+        if (exception instanceof IllegalArgumentException) {
+            statusCode = HttpStatus.BAD_REQUEST;
+        }
+        return statusCode;
+    }
+
     @ExceptionHandler({
             IllegalArgumentException.class,
             HttpClientErrorException.class,
@@ -29,14 +37,6 @@ public class HttpExceptionHandler extends ResponseEntityExceptionHandler {
         var statusCode = resolveStatusCode(exception);
         return this.handleExceptionInternal(
                 exception, null, new HttpHeaders(), statusCode, request);
-    }
-
-    private static HttpStatus resolveStatusCode(Exception exception) {
-        var statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-        if (exception instanceof IllegalArgumentException) {
-            statusCode = HttpStatus.BAD_REQUEST;
-        }
-        return statusCode;
     }
 
     @Override

@@ -17,7 +17,6 @@ import java.text.DecimalFormatSymbols;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(SpringExtension.class)
@@ -25,6 +24,24 @@ class DistanceServiceTest {
 
     @InjectMocks
     private DistanceService service;
+
+    private static Stream<Arguments> distancesSource() {
+        return Stream.of(
+                Arguments.of(2.2d, UnitDistance.METERS, 3.3d, UnitDistance.METERS, UnitDistance.METERS, "5.500"),
+                Arguments.of(2.3d, UnitDistance.YARDS, 3.2d, UnitDistance.YARDS, UnitDistance.YARDS, "5.500"),
+                Arguments.of(2d, UnitDistance.YARDS, 3d, UnitDistance.YARDS, UnitDistance.METERS, "4.572"),
+                Arguments.of(2.2d, UnitDistance.METERS, 3.3d, UnitDistance.METERS, UnitDistance.YARDS, "6.015"),
+                Arguments.of(2.2d, UnitDistance.METERS, 3.3d, UnitDistance.YARDS, UnitDistance.YARDS, "5.706"),
+                Arguments.of(2.2d, UnitDistance.YARDS, 3.3d, UnitDistance.METERS, UnitDistance.YARDS, "5.809"),
+                Arguments.of(2.2d, UnitDistance.METERS, 3.3d, UnitDistance.YARDS, UnitDistance.METERS, "5.218"),
+                Arguments.of(2.2d, UnitDistance.YARDS, 3.3d, UnitDistance.METERS, UnitDistance.METERS, "5.312"));
+    }
+
+    public static String format(double num) {
+        DecimalFormatSymbols decimalSymbols = DecimalFormatSymbols.getInstance();
+        decimalSymbols.setDecimalSeparator('.');
+        return new DecimalFormat("0.000", decimalSymbols).format(num);
+    }
 
     @ParameterizedTest
     @MethodSource("distancesSource")
@@ -41,18 +58,6 @@ class DistanceServiceTest {
         assertThat(result.getResult().getUnit()).isEqualTo(desiredUnit);
     }
 
-    private static Stream<Arguments> distancesSource() {
-        return Stream.of(
-                Arguments.of(2.2d, UnitDistance.METERS, 3.3d, UnitDistance.METERS, UnitDistance.METERS, "5.500"),
-                Arguments.of(2.3d, UnitDistance.YARDS, 3.2d, UnitDistance.YARDS, UnitDistance.YARDS, "5.500"),
-                Arguments.of(2d, UnitDistance.YARDS, 3d, UnitDistance.YARDS, UnitDistance.METERS, "4.572"),
-                Arguments.of(2.2d, UnitDistance.METERS, 3.3d, UnitDistance.METERS, UnitDistance.YARDS, "6.015"),
-                Arguments.of(2.2d, UnitDistance.METERS, 3.3d, UnitDistance.YARDS, UnitDistance.YARDS, "5.706"),
-                Arguments.of(2.2d, UnitDistance.YARDS, 3.3d, UnitDistance.METERS, UnitDistance.YARDS, "5.809"),
-                Arguments.of(2.2d, UnitDistance.METERS, 3.3d, UnitDistance.YARDS, UnitDistance.METERS, "5.218"),
-                Arguments.of(2.2d, UnitDistance.YARDS, 3.3d, UnitDistance.METERS, UnitDistance.METERS, "5.312"));
-    }
-
     @Test
     void calculateDistanceOverflow() {
         CalculationRequest request = CalculationRequest.builder()
@@ -67,10 +72,4 @@ class DistanceServiceTest {
         assertThat(result.getResult().getUnit()).isEqualTo(UnitDistance.METERS);
     }
 
-    public static String format(double num) {
-        DecimalFormatSymbols decimalSymbols = DecimalFormatSymbols.getInstance();
-        decimalSymbols.setDecimalSeparator('.');
-        return new DecimalFormat("0.000", decimalSymbols).format(num);
-    }
-    
 }

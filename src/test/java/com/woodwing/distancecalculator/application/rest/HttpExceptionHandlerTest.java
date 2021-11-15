@@ -12,16 +12,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 class HttpExceptionHandlerTest {
 
-  @Mock private WebRequest request;
+    @Mock
+    private WebRequest request;
 
-  @Test
-  void handleExceptionInternal() {
-    var exception = new IllegalArgumentException("test-exception", new Exception());
-    var handler = new HttpExceptionHandler();
-    var response = handler.handleConflict(exception, request);
-    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-    assertThat(response.getBody()).isInstanceOf(HttpExceptionJsonResponse.class);
-    assertThat(((HttpExceptionJsonResponse) response.getBody()).getError().getMessage())
-        .isEqualTo("test-exception");
-  }
+    @Test
+    void handleExceptionInternal() {
+        var exception = new IllegalArgumentException("test-exception", new Exception());
+        var handler = new HttpExceptionHandler();
+        var response = handler.handleConflict(exception, request);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        assertThat(response.getBody()).isInstanceOf(HttpExceptionJsonResponse.class);
+        assertThat(((HttpExceptionJsonResponse) response.getBody()).getError().getMessage())
+                .isEqualTo("test-exception");
+    }
 }

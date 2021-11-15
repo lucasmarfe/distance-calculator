@@ -36,7 +36,7 @@ class DistanceIT {
                                 .queryParam("resultUnitDistance", String.valueOf(UnitDistance.YARDS)))
                 .andExpect(status().isOk())
                 .andExpect(
-                        jsonPath("$.value")
+                        jsonPath("$.result.value")
                                 .value(2d));
     }
 
@@ -72,6 +72,6 @@ class DistanceIT {
                 .andExpect(status().isBadRequest())
                 .andExpect(
                         jsonPath("$.error.message",
-                                containsString("Failed to convert value of type 'java.lang.String' to required type 'com.woodwing.distance.domain.Distance.UnitDistance'")));
+                                containsString("Failed to convert value of type 'java.lang.String' to required type 'com.woodwing.distancecalculator.domain.UnitDistance';")));
     }
 }

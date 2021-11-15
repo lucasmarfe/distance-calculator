@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class DistanceFactoryTest {
 
     @Test
-    void convertDistanceFromMetersToYards(){
+    void convertDistanceFromMetersToYards() {
         var metersDistance = Distance.builder().value(1d).unit(UnitDistance.METERS).build();
 
         Distance response = DistanceFactory.toUnit(metersDistance, UnitDistance.YARDS);
@@ -16,7 +16,7 @@ class DistanceFactoryTest {
     }
 
     @Test
-    void convertDistanceFromYardsToMeters(){
+    void convertDistanceFromYardsToMeters() {
         var metersDistance = Distance.builder().value(1d).unit(UnitDistance.YARDS).build();
 
         Distance response = DistanceFactory.toUnit(metersDistance, UnitDistance.METERS);
@@ -25,7 +25,7 @@ class DistanceFactoryTest {
     }
 
     @Test
-    void convertDistanceFromMetersToMeters(){
+    void convertDistanceFromMetersToMeters() {
         var metersDistance = Distance.builder().value(1d).unit(UnitDistance.METERS).build();
 
         Distance response = DistanceFactory.toUnit(metersDistance, UnitDistance.METERS);
@@ -34,7 +34,7 @@ class DistanceFactoryTest {
     }
 
     @Test
-    void convertDistanceFromYardsToYards(){
+    void convertDistanceFromYardsToYards() {
         var metersDistance = Distance.builder().value(1d).unit(UnitDistance.YARDS).build();
 
         Distance response = DistanceFactory.toUnit(metersDistance, UnitDistance.YARDS);

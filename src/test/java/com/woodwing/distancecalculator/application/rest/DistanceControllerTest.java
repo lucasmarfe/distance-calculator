@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -27,7 +27,7 @@ class DistanceControllerTest {
     private DistanceService service;
 
     @Test
-    void calculatesDistance(){
+    void calculatesDistance() {
         Distance expectedDistance = Distance.builder().value(2d).unit(UnitDistance.YARDS).build();
         when(service.addDistances(any(CalculationRequest.class)))
                 .thenReturn(CalculationResponse.builder().result(expectedDistance).build());

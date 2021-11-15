@@ -1,7 +1,7 @@
 <configuration>
     <contextName>distance-api</contextName>
 
-    <jmxConfigurator />
+    <jmxConfigurator/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -21,7 +21,9 @@
             <totalSizeCap>10MB</totalSizeCap>
         </rollingPolicy>
         <encoder>
-            <pattern>{"timestamp":"%date{YYYY-MM-dd HH:mm:ss}", "service":"${CONTEXT_NAME}", "thread":"[%thread]", "level":"%level", "meta":%msg %nopex}%n</pattern>
+            <pattern>{"timestamp":"%date{YYYY-MM-dd HH:mm:ss}", "service":"${CONTEXT_NAME}", "thread":"[%thread]",
+                "level":"%level", "meta":%msg %nopex}%n
+            </pattern>
         </encoder>
     </appender>
 
@@ -35,25 +37,27 @@
             <totalSizeCap>10MB</totalSizeCap>
         </rollingPolicy>
         <encoder>
-            <pattern>{"timestamp":"%date{YYYY-MM-dd HH:mm:ss}", "service":"${CONTEXT_NAME}", "thread":"[%thread]", "level":"%level", "meta":%msg %nopex}%n</pattern>
+            <pattern>{"timestamp":"%date{YYYY-MM-dd HH:mm:ss}", "service":"${CONTEXT_NAME}", "thread":"[%thread]",
+                "level":"%level", "meta":%msg %nopex}%n
+            </pattern>
         </encoder>
     </appender>
 
     <logger name="distance.service.flowitem.monitor" level="ERROR" additivity="false">
-        <appender-ref ref="FILE-MONITOR" />
+        <appender-ref ref="FILE-MONITOR"/>
     </logger>
     <logger name="distance.service.controller.monitor" level="TRACE" additivity="false">
-        <appender-ref ref="FILE-MONITOR" />
+        <appender-ref ref="FILE-MONITOR"/>
     </logger>
     <logger name="distance.service.monitor.params" level="ERROR" additivity="false">
-        <appender-ref ref="FILE-MONITOR" />
+        <appender-ref ref="FILE-MONITOR"/>
     </logger>
     <logger name="distance.trace.client.rest" level="ERROR" additivity="false">
-        <appender-ref ref="FILE-MONITOR" />
+        <appender-ref ref="FILE-MONITOR"/>
     </logger>
 
     <root level="INFO">
-        <appender-ref ref="FILE" />
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
